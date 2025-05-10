@@ -2,9 +2,14 @@ name: First Workflow
 on:
   push:
     branches:
-      - main  # Replace 'main' with your branch name if different
+      - main
+
 jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, GitHub Actions!"
+      - name: Checkout repository
+        uses: actions/checkout@v4  # This allows GitHub Actions to access your files
+
+      - name: Print repository files
+        run: ls -lah
